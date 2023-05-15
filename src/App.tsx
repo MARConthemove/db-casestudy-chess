@@ -19,8 +19,10 @@ function App() {
       <div className='App'>
         <Router>
           <Routes>
-            <Route path='/' element={<Board />} />
-            {/* <Route path='*' element={<Navigate to='/chessboard.html' />} /> */}
+            <Route path='/chessboard.html'>
+              <Route path='' element={<Board />} />
+            </Route>
+            <Route path='/*' element={<Navigate to='/chessboard.html' />} />
           </Routes>
         </Router>
       </div>
