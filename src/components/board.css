@@ -17,14 +17,17 @@
 /* Farben für Felder, Startposition und mögliche Zielpositionen des Springers */
 .start-text {
   color: yellow;
+  font-weight: 800;
 }
 
 .target-text {
   color: white;
+  font-weight: 800;
 }
 
 .default-text {
   color: black;
+  font-weight: 800;
 }
 
 .white-square {
