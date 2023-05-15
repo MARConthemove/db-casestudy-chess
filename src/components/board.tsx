@@ -3,7 +3,14 @@ import './board.css'
 
 const Board: React.FC = () => {
   const rows = 'abcdefgh'.split('')
-  const columns = Array.from({ length: 8 }, (_, i) => i + 1) // [1, 2, 3, 4, 5, 6, 7, 8]
+  console.log('rows:', rows)
+
+  // const columns = Array.from({ length: 8 }, (_, i) => i + 1) // [1, 2, 3, 4, 5, 6, 7, 8]
+  const columns: number[] = []
+  for (let i = 1; i <= 8; i++) {
+    columns.push(i)
+  }
+  console.log('columns:', columns)
 
   return (
     <div
