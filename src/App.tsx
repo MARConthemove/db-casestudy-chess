@@ -1,21 +1,28 @@
 import React from 'react'
-import { Routes, Route } from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from 'react-router-dom'
 import './App.css'
 import Board from './components/board'
 
 import { Typography } from '@mui/material'
 
-const App: React.FC = () => {
+function App() {
   return (
     <>
       <Typography variant='h2' align='center' style={{ paddingBottom: '10px' }}>
         DB Case Study Chess
       </Typography>
-      <Routes>
-        <Route path='/' />
-      </Routes>
       <div className='App'>
-        <Board />
+        <Router>
+          <Routes>
+            <Route path='/' element={<Board />} />
+            {/* <Route path='*' element={<Navigate to='/chessboard.html' />} /> */}
+          </Routes>
+        </Router>
       </div>
     </>
   )

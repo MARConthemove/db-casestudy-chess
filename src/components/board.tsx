@@ -1,16 +1,35 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom'
 import './board.css'
 
 const Board: React.FC = () => {
-  const rows = 'abcdefgh'.split('')
-  console.log('rows:', rows)
+  const [startPosition, setStartPosition] = useState('')
+  const navigate = useNavigate()
+  const location = useLocation()
 
-  // const columns = Array.from({ length: 8 }, (_, i) => i + 1) // [1, 2, 3, 4, 5, 6, 7, 8]
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search)
+    const start = searchParams.get('start')
+    if (start) {
+      setStartPosition(start)
+    }
+  }, [location])
+
+  const handleSquareClick = (position: string) => {
+    setStartPosition(position)
+
+    const searchParams = new URLSearchParams()
+    searchParams.set('start', position)
+    const newUrl = `?${searchParams.toString()}`
+    navigate(newUrl)
+  }
+
+  const rows = 'abcdefgh'.split('')
+
   const columns: number[] = []
   for (let i = 1; i <= 8; i++) {
     columns.push(i)
   }
-  console.log('columns:', columns)
 
   return (
     <div
@@ -20,13 +39,24 @@ const Board: React.FC = () => {
         <div key={i} style={{ display: 'flex' }}>
           {columns.map((column, j) => {
             const isWhiteSquare = (i + j) % 2 === 0
-            const squareClassName = `board-square ${
-              isWhiteSquare ? 'white-square' : 'black-square'
-            }`
+            const position = `${row}${column}`
+            const isSelected = position === startPosition
+            let additionalClassName = isWhiteSquare
+              ? 'white-square'
+              : 'black-square'
+            const squareClassName = `board-square ${additionalClassName}`
+            const textClassName = isSelected ? 'start-square' : ''
+
             return (
-              <div key={j} className={squareClassName}>
-                {row}
-                {column}
+              <div
+                key={j}
+                className={squareClassName}
+                onClick={() => handleSquareClick(position)}
+              >
+                <div className={textClassName}>
+                  {row}
+                  {column}
+                </div>
               </div>
             )
           })}

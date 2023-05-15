@@ -10,23 +10,27 @@
   font-size: 200%; /* Schriftgröße soll sich dynamisch an Größe des Schachbretts anpassen */
 }
 
-/* Faben für Felder, Startposition und mögliche Endpostionen von Zügen des Springers */
-.white-square {
-  background-color: #00ccff;
+.board-square:hover {
+  cursor: pointer;
 }
 
-.black-square {
-  background-color: #0099ff;
+/* Faben für Felder, Startposition und mögliche Endpostionen von Zügen des Springers */
+.start-square {
+  color: yellow;
+}
+
+.target-square {
+  color: white;
 }
 
 .description {
   color: black;
 }
 
-.start-square {
-  background-color: yellow;
+.white-square {
+  background-color: #00ccff;
 }
 
-.target-square {
-  background-color: white;
+.black-square {
+  background-color: #0099ff;
 }
