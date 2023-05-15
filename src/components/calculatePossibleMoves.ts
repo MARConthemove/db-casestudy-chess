@@ -10,6 +10,10 @@ const possibleKnightMoves: [number, number][] = [
 ]
 
 export const calculatePossibleKnightMoves = (start: string) => {
+  if (!/^[a-h][1-8]$/.test(start)) {
+    return []
+  }
+
   let startRow = start.charCodeAt(0) - 'a'.charCodeAt(0)
   let startCol = parseInt(start[1]) - 1
   let possibleMoves = []

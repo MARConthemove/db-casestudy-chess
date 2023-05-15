@@ -13,16 +13,22 @@ import { Box, Typography } from '@mui/material'
 function App() {
   return (
     <>
-      <Typography variant='h2' align='center' style={{ padding: '15px 0' }}>
-        <Box display='flex' alignItems='center' justifyContent='center'>
-          <img
-            src='/Deutsche_Bahn_AG-Logo.svg.png'
-            alt='DB Logo'
-            style={{ height: '45px', paddingRight: '15px' }}
-          />
+      <Box
+        display='flex'
+        alignItems='center'
+        justifyContent='center'
+        gap='15px'
+        p='15px'
+      >
+        <img
+          src='/Deutsche_Bahn_AG-Logo.svg.png'
+          alt='DB Logo'
+          style={{ height: '45px' }}
+        />
+        <Typography variant='h2' align='center'>
           Case Study Chess
-        </Box>
-      </Typography>
+        </Typography>
+      </Box>
       <div className='App'>
         <Router>
           <Routes>
