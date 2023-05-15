@@ -14,16 +14,16 @@
   cursor: pointer;
 }
 
-/* Faben für Felder, Startposition und mögliche Endpostionen von Zügen des Springers */
-.start-square {
+/* Farben für Felder, Startposition und mögliche Zielpositionen des Springers */
+.start-text {
   color: yellow;
 }
 
-.target-square {
+.target-text {
   color: white;
 }
 
-.description {
+.default-text {
   color: black;
 }
 
