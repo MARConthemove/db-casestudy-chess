@@ -1,24 +1,33 @@
 import React, { useState, useEffect } from 'react'
-import { useNavigate, useLocation } from 'react-router-dom'
-import './board.css'
+import { useNavigate, useSearchParams } from 'react-router-dom'
+import { calculatePossibleKnightMoves } from './calculatePossibleMoves'
+import './Board.css'
+
+import { Box } from '@mui/material'
+
+const createChessBoard = () => {
+  const rows = 'abcdefgh'.split('')
+  const cols: number[] = []
+  for (let i = 1; i <= 8; i++) {
+    cols.push(i)
+  }
+  return { rows, cols }
+}
 
 const Board: React.FC = () => {
   const [startPosition, setStartPosition] = useState('')
   const [possibleMoves, setPossibleMoves] = useState<string[]>([])
+  let [searchParams] = useSearchParams()
   const navigate = useNavigate()
-  const location = useLocation()
 
   useEffect(() => {
-    const searchParams = new URLSearchParams(location.search)
     const start = searchParams.get('start')
     if (start) {
       setStartPosition(start)
-      const moves = calculateHorseMoves(start)
+      const moves = calculatePossibleKnightMoves(start)
       setPossibleMoves(moves)
     }
-  }, [location])
-
-  console.log('possibleMoves: ', possibleMoves)
+  }, [searchParams])
 
   const handleSquareClick = (position: string) => {
     setStartPosition(position)
@@ -29,84 +38,40 @@ const Board: React.FC = () => {
     navigate(newUrl)
   }
 
-  const rows = 'abcdefgh'.split('')
-
-  const columns: number[] = []
-  for (let i = 1; i <= 8; i++) {
-    columns.push(i)
-  }
-
-  const horseMoves: [number, number][] = [
-    [-1, -2],
-    [-1, 2],
-    [1, -2],
-    [1, 2],
-    [-2, -1],
-    [-2, 1],
-    [2, -1],
-    [2, 1],
-  ]
-
-  const calculateHorseMoves = (start: string) => {
-    let startRow = start.charCodeAt(0) - 'a'.charCodeAt(0)
-    let startCol = parseInt(start[1]) - 1
-
-    let possibleMoves = []
-
-    for (let move of horseMoves) {
-      let newRow = startRow + move[0]
-      let newCol = startCol + move[1]
-
-      if (newRow >= 0 && newRow < 8 && newCol >= 0 && newCol < 8) {
-        let newPosition =
-          String.fromCharCode(newRow + 'a'.charCodeAt(0)) +
-          (newCol + 1).toString()
-        possibleMoves.push(newPosition)
-      }
-    }
-
-    return possibleMoves
-  }
+  const { rows, cols } = createChessBoard()
 
   return (
-    <div
-      style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
-    >
+    <Box display='flex' flexDirection='column' alignItems='center'>
       {rows.map((row, i) => (
-        <div key={i} style={{ display: 'flex' }}>
-          {columns.map((column, j) => {
+        <Box key={i} display='flex'>
+          {cols.map((col, j) => {
             const isWhiteSquare = (i + j) % 2 === 0
-            const position = `${row}${column}`
-            const isSelected = position === startPosition
+            const position = `${row}${col}`
+            const isStartPosition = position === startPosition
             const isPossibleMove = possibleMoves.includes(position)
             let additionalClassName = isWhiteSquare
               ? 'white-square'
               : 'black-square'
             let textClassName = 'default-text'
-            if (isSelected) {
+            if (isStartPosition) {
               textClassName = 'start-text'
             } else if (isPossibleMove) {
               textClassName = 'target-text'
             }
 
-            const squareClassName = `board-square ${additionalClassName}`
-
             return (
-              <div
-                key={j}
-                className={squareClassName}
+              <Box
+                key={position}
+                className={`board-square ${additionalClassName}`}
                 onClick={() => handleSquareClick(position)}
               >
-                <div className={textClassName}>
-                  {row}
-                  {column}
-                </div>
-              </div>
+                <Box className={textClassName}>{position}</Box>
+              </Box>
             )
           })}
-        </div>
+        </Box>
       ))}
-    </div>
+    </Box>
   )
 }
 

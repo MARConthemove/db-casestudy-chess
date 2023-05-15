@@ -6,7 +6,7 @@ import {
   Navigate,
 } from 'react-router-dom'
 import './App.css'
-import Board from './components/board'
+import Board from './components/Board'
 
 import { Typography } from '@mui/material'
 
