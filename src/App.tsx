@@ -9,13 +9,11 @@ import './App.css'
 import Board from './components/Board'
 
 import { Box, Typography } from '@mui/material'
-import '@fontsource/roboto/400.css'
-import '@fontsource/roboto/500.css'
 
 function App() {
   return (
     <>
-      <Typography variant='h2' align='center' style={{ paddingBottom: '10px' }}>
+      <Typography variant='h2' align='center' style={{ padding: '15px 0' }}>
         <Box display='flex' alignItems='center' justifyContent='center'>
           <img
             src='/Deutsche_Bahn_AG-Logo.svg.png'
