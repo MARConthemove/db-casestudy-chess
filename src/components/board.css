@@ -1,0 +1,32 @@
+/* STYLESHEET Schachbrett */
+
+/* Geometrie und Anordnung der Schachbrettfelder */
+.board-square {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 200%; /* Schriftgröße soll sich dynamisch an Größe des Schachbretts anpassen */
+}
+
+/* Faben für Felder, Startposition und mögliche Endpostionen von Zügen des Springers */
+.white-square {
+  background-color: #00ccff;
+}
+
+.black-square {
+  background-color: #0099ff;
+}
+
+.description {
+  color: black;
+}
+
+.start-square {
+  background-color: yellow;
+}
+
+.target-square {
+  background-color: white;
+}
