@@ -2,12 +2,12 @@
 
 /* Geometrie und Anordnung der Schachbrettfelder */
 .board-square {
-  width: 100px;
-  height: 100px;
+  width: 10vw;
+  height: 10vw;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 200%; /* Schriftgröße soll sich dynamisch an Größe des Schachbretts anpassen */
+  font-size: 3.5vw; /* Schriftgröße soll sich dynamisch an Größe des Schachbretts anpassen */
 }
 
 .board-square:hover {
