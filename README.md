@@ -1,6 +1,12 @@
-# Getting Started with Create React App
+# DB Case Study Chess Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Dieses Projekt umfasst die Entwicklung einer interaktiven Webanwendung, die ein Schachbrett darstellt und die möglichen Züge eines Springers (eng. Knight) visualisiert und simmuliert. Die Anwendung ist in HTML, CSS und JavaScript/TypeScript geschrieben. Also Frameworks wurden React.js und MaterialUI (MUI) verwendet. Alle weiteren "Dependencies" siehe package.json.
+
+Die Anwendung akzeptiert eine URL-Query-Parameter namens "start", der den Startplatz des Springers bestimmt, z.B. "e4". Es ist auserdem möglich, ein Feld anzuklicken, um so die Startposition des Läufers zu bestimmen. Basierend auf diesem Startfeld berechnet die Anwendung die möglichen Züge des Springers und hebt diese auf dem Schachbrett hervor (weiß). Darüber hinaus wird das Startfeld selbst auch visuell hervorgehoben (gelb).
+
+Die Anwendung ist so konzipiert, dass die Farben des Schachbretts und die Farben der Beschreibungen einfach durch Änderung des Stylesheets angepasst werden können (Board.css).
+
+Der Code für dieses Projekt ist auf Github verfügbar, was eine einfache Nachvollziehbarkeit der Entwicklungsschritte ermöglicht.
 
 ## Available Scripts
 
