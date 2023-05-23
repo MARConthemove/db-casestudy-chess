@@ -1,4 +1,7 @@
-import { calculatePossibleKnightMoves } from './calculatePossibleMoves'
+import {
+  calculatePossibleKnightMoves,
+  calculatePossibleKingMoves,
+} from './calculatePossibleMoves'
 
 describe('calculatePossibleKnightMoves', () => {
   it('calculates correct knight moves from a given position', () => {
@@ -20,10 +23,21 @@ describe('calculatePossibleKnightMoves', () => {
   })
 
   it('returns an empty array for invalid input', () => {
-    const startPosition = 'i9'
+    const startPosition = 'i0'
 
     const moves = calculatePossibleKnightMoves(startPosition)
 
     expect(moves).toEqual([])
+  })
+})
+
+describe('calculatePossibleKingMoves', () => {
+  it('calculates moves of king', () => {
+    const startPosition = 'd4'
+    const expectedMoves = ['c3', 'c4', 'c5', 'd5', 'e5', 'e4', 'e3', 'd3']
+
+    const moves = calculatePossibleKingMoves(startPosition)
+
+    expect(moves.sort()).toEqual(expectedMoves.sort())
   })
 })

@@ -9,6 +9,12 @@ const possibleKnightMoves: [number, number][] = [
   [2, 1],
 ]
 
+const possibleKingMoves: [number, number][] = []
+
+export const calculatePossibleKingMoves = (start: string) => {
+  return []
+}
+
 export const calculatePossibleKnightMoves = (start: string) => {
   if (!/^[a-h][1-8]$/.test(start)) {
     return []
